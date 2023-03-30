@@ -1,6 +1,5 @@
 import { css } from 'styled-components';
 
-export const HIRAGINO_KAKU_GOTHIC = "'Noto Sans JP', sans-serif;";
 export const INTER = "'Inter', sans-serif;";
 
 export const THEME = {
@@ -18,7 +17,6 @@ export const THEME = {
   },
   typo: {
     family: {
-      hiraginoKakuGothic: HIRAGINO_KAKU_GOTHIC,
       inter: INTER,
     },
     style: {
