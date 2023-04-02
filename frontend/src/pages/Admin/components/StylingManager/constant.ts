@@ -3,45 +3,21 @@ import ElementInput from './ElementInput/index';
 export const config = {
   p: [
     {
-      type: 'Margin Padding',
-      concept: [
-        { margin: ['Top', 'Bottom', 'Left', 'Right'] },
-        { padding: ['Top', 'Bottom', 'Left', 'Right'] },
-      ],
+      name: 'Text',
+      includesion: ['Content', 'Font size', 'Font weight', 'Color'],
     },
-    {
-      type: 'Text',
-      concept: [{ text: ['fontsize', 'fontweight', 'color'] }],
-    },
-    {
-      type: 'Border',
-      concept: ['width', 'radius', 'color'],
-    },
-    {
-      type: 'Background',
-      concept: ['Background Color', 'Image'],
-    },
+    { name: 'Margin', includesion: ['Top', 'Bottom', 'Left', 'Right'] },
+    { name: 'Padding', includesion: ['Top', 'Bottom', 'Left', 'Right'] },
+    { name: 'Background', includesion: ['Color'] },
   ],
   button: [
     {
-      type: 'Margin Padding',
-      concept: [
-        { margin: ['Top', 'Bottom', 'Left', 'Right'] },
-        { padding: ['Top', 'Bottom', 'Left', 'Right'] },
-      ],
+      name: 'Text',
+      includesion: ['Content', 'Font size', 'Font weight', 'Color'],
     },
-    {
-      type: 'Text',
-      concept: [{ text: ['fontsize', 'fontweight', 'color'] }],
-    },
-    {
-      type: 'Border',
-      concept: ['width', 'radius', 'color'],
-    },
-    {
-      type: 'Background',
-      concept: ['Background Color', 'Image'],
-    },
+    { name: 'Margin', includesion: ['Top', 'Bottom', 'Left', 'Right'] },
+    { name: 'Padding', includesion: ['Top', 'Bottom', 'Left', 'Right'] },
+    { name: 'Background', includesion: ['Color'] },
   ],
 };
 

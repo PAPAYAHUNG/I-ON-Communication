@@ -5,21 +5,25 @@ import { API_URL } from '../../constants/api';
 
 const sliceName = 'banner';
 
+interface ListItemProps {
+  element: string;
+  coordinate: XYCoord | null;
+  id: number;
+  stylingConfig:any
+}
 export interface DndProps {
   isLoading: boolean;
   data: any;
   error: any;
-  listItems: any;
+  listItems: ListItemProps[];
   counting: number;
   activeTab: string;
   clickedItem: string;
 }
 
-interface ListItemProps {
-  element: string;
-  coordinate: XYCoord | null;
-  id: number;
-}
+
+
+
 
 const INITIAL_STATE: DndProps = {
   isLoading: true,

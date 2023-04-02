@@ -1,39 +1,56 @@
-import React from 'react';
-import styled from 'styled-components';
+import React, { useMemo } from 'react';
+import styled from 'styled-components/macro';
 import useDnDService from '../../../../hooks/useDndService';
 import { config } from './constant';
 import ElementInput from './ElementInput';
+import { log } from 'console';
+import ColorPicker from './ColorPicker';
+import { Collapse } from 'antd';
 
-
-const StyledContainer = styled.div``
-const StyledElement = styled.div`
-    
-`
+const StyledContainer = styled.div`
+  padding: 0px 10px;
+`;
+const StyledElement = styled(Collapse)``;
+const StyledItem = styled(Collapse.Panel)`
+  .includeItem {
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+  }
+`;
 
 const StylingManager = () => {
- const {dndState} = useDnDService();
-const {clickedItem} = dndState || {}
- console.log('ahihi',clickedItem);
+  const { dndState } = useDnDService();
+  const { clickedItem, listItems } = dndState || {};
 
- const renderParagraph = () =>{
-   return config?.p.map((item,index)=>{
-        return <StyledElement key={index}>
-        <h1>{item.type}</h1>
-        {
-            item.concept.map((item2,index2)=>{
-                return 'HIH'
-            })
-        }
+  const renderStylingElement = (inputTypes: any) => {
+    return inputTypes.includesion.map((includeItem: string, index: number) => {
+      return (
+        <div className="includeItem" key={index}>
+          <div>{includeItem}</div>
+          {includeItem === 'Color' ? (
+            <ColorPicker />
+          ) : (
+            <ElementInput type={includeItem} />
+          )}
+        </div>
+      );
+    });
+  };
+
+  const renderParagraph = () => {
+    return config?.p.map((item, index) => {
+      return (
+        <StyledElement key={index}>
+          <StyledItem header={item.name} key={index}>
+            <div className="inlcusion">{renderStylingElement(item)}</div>
+          </StyledItem>
         </StyledElement>
-    })
- }
- 
-  return (
-    <StyledContainer>
-      StylingManager
-     {renderParagraph()}
-    </StyledContainer>
-  );
+      );
+    });
+  };
+
+  return <StyledContainer>{renderParagraph()}</StyledContainer>;
 };
 
 export default StylingManager;
