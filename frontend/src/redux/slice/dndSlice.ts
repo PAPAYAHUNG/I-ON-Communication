@@ -11,6 +11,8 @@ export interface DndProps {
   error: any;
   listItems: any;
   counting: number;
+  activeTab: string;
+  clickedItem: string;
 }
 
 interface ListItemProps {
@@ -25,6 +27,8 @@ const INITIAL_STATE: DndProps = {
   error: null,
   counting: 0,
   listItems: [],
+  activeTab: '1',
+  clickedItem: '',
 };
 
 export const DndSlice = createSlice({
@@ -33,7 +37,28 @@ export const DndSlice = createSlice({
   reducers: {
     setListItems: (state, { payload }) => {
       state.counting += 1;
-      state.listItems = [...state.listItems, payload];
+      const updatedPayload = { ...payload, id: state.counting };
+      state.listItems = [...state.listItems, updatedPayload];
+    },
+    setActiveKey: (state, { payload }) => {
+      console.log('im run tab here');
+      console.log({ payload });
+
+      state.activeTab = payload;
+    },
+    setClickedItem: (state, { payload }) => {
+      state.clickedItem = payload;
+    },
+    deleteItem: (state, { payload }) => {
+      console.log({ payload });
+
+      const index = state.listItems.findIndex(
+        (item: any) => item.id === payload,
+      );
+
+      if (index !== -1) {
+        state.listItems.splice(index, 1);
+      }
     },
   },
 });

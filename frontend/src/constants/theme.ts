@@ -14,6 +14,8 @@ export const THEME = {
     dark500: '#414141',
     gray400: '#777777',
     borderGray: '#707070',
+    red: '#692f2f',
+    lightgreen: '#0a4139',
   },
   typo: {
     family: {

@@ -8,7 +8,11 @@ import Sidebar from './Sidebar';
 
 const StyledContainer = styled.div`
   display: flex;
-  height: 100vh;
+  position: absolute;
+  top: 60px;
+  bottom: 0px;
+  left: 0px;
+  right: 0px;
 
   .sidebar {
     width: 300px;
@@ -30,7 +34,6 @@ const DragAndDropWindow = () => {
         </div>
         <div className="main-zone">
           <Dustbin />
-
         </div>
       </DndProvider>
     </StyledContainer>

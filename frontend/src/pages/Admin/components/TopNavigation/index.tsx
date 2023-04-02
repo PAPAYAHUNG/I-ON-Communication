@@ -1,11 +1,12 @@
 import React, { useMemo } from 'react';
-import styled from 'styled-components';
+import styled from 'styled-components/macro';
 
 const StyledWrapper = styled.div`
   display: flex;
-  padding: 10px 0px;
   justify-content: center;
+  align-items: center;
   gap: 20px;
+  height: 60px;
   /* box-shadow: 5px  2px ${(props) => props.theme.color.gray400}; ; */
 `;
 
@@ -13,6 +14,8 @@ const StyledItem = styled.div`
   display: flex;
   padding: 5px 10px;
   border-radius: 10px;
+  height: 30px;
+  line-height: 30px;
   background-color: ${(props) => props.theme.color.primary300};
   ${(props) => props.theme.typo.family.inter};
   ${(props) => props.theme.typo.style.l2Header};

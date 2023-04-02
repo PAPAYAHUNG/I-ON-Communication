@@ -14,9 +14,25 @@ const useDnDService = () => {
     dispatch(dndAction.actions.setListItems(item));
   }, [dispatch]);
 
+  const setActiveKey = useCallback((item:any) => {
+    dispatch(dndAction.actions.setActiveKey(item));
+  }, [dispatch]);
+
+  const setClickedItem = useCallback((item:any) => {
+    dispatch(dndAction.actions.setClickedItem(item));
+  }, [dispatch]);
+
+  const deleteItem = useCallback((item:any) => {
+    dispatch(dndAction.actions.deleteItem(item));
+  }, [dispatch]);
+
   return {
     setListItems,
     dndState,
+    setActiveKey,
+    deleteItem,
+    setClickedItem
+
   };
 };
 

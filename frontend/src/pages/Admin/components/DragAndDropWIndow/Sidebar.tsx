@@ -5,17 +5,19 @@ import styled from 'styled-components/macro';
 import { Box } from '../Box';
 import { Tabs } from 'antd';
 import type { TabsProps } from 'antd';
+import useDnDService from '../../../../hooks/useDndService';
+import StylingManager from '../StylingManager';
 
-const StyledTab =styled(Tabs)`
- width: 100%;
-    .ant-tabs{
-        width: 100%;
-    }
+const StyledTab = styled(Tabs)`
+  width: 100%;
+  .ant-tabs {
+    width: 100%;
+  }
 
-    .ant-tabs-nav-wrap{
-        justify-content: center;
-    }
-`
+  .ant-tabs-nav-wrap {
+    justify-content: flex-start;
+  }
+`;
 const StyledContainer = styled.div`
   display: flex;
   gap: 20px;
@@ -38,16 +40,20 @@ const Items: ItemProps[] = [
 ];
 
 const Sidebar = () => {
-  const onChange = (key: string) => {
-    console.log(key);
-  };
+  const { dndState,setActiveKey } = useDnDService();
+  const { activeTab } = dndState;
 
+  const onChange = (key: string) => {
+    setActiveKey(key)
+  };
 
   const renderItems = useMemo(
     () => Items.map((item, index) => <Box {...item} />),
     [],
   );
-  const renderComponentElements =()=> <StyledContainer>{renderItems}</StyledContainer>;
+  const renderComponentElements = () => (
+    <StyledContainer>{renderItems}</StyledContainer>
+  );
 
   const items: TabsProps['items'] = [
     {
@@ -58,7 +64,7 @@ const Sidebar = () => {
     {
       key: '2',
       label: `Styles`,
-      children: `Content of Tab Pane 2`,
+      children: <StylingManager/>,
     },
     {
       key: '3',
@@ -66,7 +72,14 @@ const Sidebar = () => {
       children: `Content of Tab Pane 3`,
     },
   ];
-  return <StyledTab defaultActiveKey="1" items={items} onChange={onChange} />;
+  return (
+    <StyledTab
+      defaultActiveKey="1"
+      items={items}
+      onChange={onChange}
+      activeKey={activeTab}
+    />
+  );
 };
 
 export default Sidebar;
